@@ -21,7 +21,7 @@ public class InputFileParser {
                 for (int j = 0; j < numOfTags; j++) {
                     tags.add(line[j + 2]);
                 }
-                photos.add(new Photo(dir, tags));
+                photos.add(new Photo(dir, tags, i));
             }
 
             reader.close();
