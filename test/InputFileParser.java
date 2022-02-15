@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class InputFileParser {
 
@@ -19,11 +17,11 @@ public class InputFileParser {
                 String[] line = reader.readLine().split(" ");
                 Photo.Direction dir = line[0].equals("V") ? Photo.Direction.VERTICAL : Photo.Direction.HORIZONTAL;
                 long numOfTags = Long.parseLong(line[1]);
-                Set<String> tags = new HashSet<>();
+                List<String> tags = new ArrayList<>();
                 for (int j = 0; j < numOfTags; j++) {
-                    tags.add(line[j + 2].toString());
+                    tags.add(line[j + 2]);
                 }
-                photos.add(new Photo(dir, new ArrayList<>(tags)));
+                photos.add(new Photo(dir, tags));
             }
 
             reader.close();
