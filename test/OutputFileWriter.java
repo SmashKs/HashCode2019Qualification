@@ -1,5 +1,4 @@
 import java.io.PrintWriter;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class OutputFileWriter {

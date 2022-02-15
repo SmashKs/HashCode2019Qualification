@@ -6,8 +6,8 @@ public class Output {
 
     private final List<SlideInformation> slideInformationList;
 
-    public Output(int numSlides, List<SlideInformation> slideInformationList) {
-        this.numSlides = numSlides;
+    public Output(List<SlideInformation> slideInformationList) {
+        this.numSlides = slideInformationList.size();
         this.slideInformationList = slideInformationList;
     }
 
@@ -19,7 +19,7 @@ public class Output {
         return slideInformationList;
     }
 
-    class SlideInformation {
+    static class SlideInformation {
         private final List<Integer> photoIdList;
 
         public SlideInformation(List<Integer> photoIdList) {
