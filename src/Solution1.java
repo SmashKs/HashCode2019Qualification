@@ -32,8 +32,8 @@ public class Solution1 implements Solution {
         ArrayList<Photo> photos = new ArrayList<>(input.photos);
         // *** step 1
         ArrayList<Slide> slides = new ArrayList<>();
-        slides.addAll(extractHorizontalPhotoAsSlide(photos));
         slides.addAll(mergeTheVerticalPhoto(photos));
+        slides.addAll(extractHorizontalPhotoAsSlide(photos));
         // *** step 2
         // pick a random photo
         Slide slide = slides.get(new Random().nextInt(slides.size()));
@@ -41,7 +41,7 @@ public class Solution1 implements Solution {
         res.add(convert(slide));
 
         while (!slides.isEmpty()) {
-            Slide matchedSlide = pickTheHighestPhoto(slides, slide);
+            Slide matchedSlide = pickHighestScorePhoto(slides, slide);
             slides.remove(matchedSlide);
             res.add(convert(matchedSlide));
             slide = matchedSlide;
@@ -77,8 +77,8 @@ public class Solution1 implements Solution {
                      .collect(Collectors.toList());
     }
 
-    private Slide pickTheHighestPhoto(List<Slide> slides, Slide slide) {
-        long highestScore = 0;
+    private Slide pickHighestScorePhoto(List<Slide> slides, Slide slide) {
+        long highestScore = Long.MIN_VALUE;
         Slide matchSlide = null;
         for (final Slide s : slides) {
             long matchScore = pair(slide, s);
